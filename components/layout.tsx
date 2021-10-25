@@ -67,7 +67,7 @@ export default function Layout({
       </Header>
       <ul>
         <li>Using StyledComponents</li>
-        <li>Using Suitcase</li>
+        {/* <li>Using Suitcase</li> */}
         <li>Call API server side</li>
         <li>Custom response headers from API call</li>
       </ul>

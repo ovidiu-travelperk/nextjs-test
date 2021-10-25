@@ -1,4 +1,4 @@
-import { Button, Card, FormattedText, Spacer } from "@travelperksl/suitcase";
+// import { Button, Card, FormattedText, Spacer } from "@travelperksl/suitcase";
 import Layout from "components/layout";
 import Head from "next/head";
 import Link from "next/link";
@@ -20,7 +20,7 @@ export default function Home() {
           Navigate with <Link href="/posts/first-post">SPA!</Link>
         </h1>
 
-        <Card accentColor="blue">
+        {/* <Card accentColor="blue">
           <Spacer top={2} left={2} bottom={2} right={2}>
             A suitcase Card
             <FormattedText size="displayXL" color="brand">
@@ -28,7 +28,7 @@ export default function Home() {
             </FormattedText>
             <Button styleType="primary">Suitcase button</Button>
           </Spacer>
-        </Card>
+        </Card> */}
       </Layout>
 
       <style jsx global>{`
