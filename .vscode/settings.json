@@ -1,0 +1,4 @@
+{
+    "typescript.tsdk": "node_modules/typescript/lib",
+    "security.workspace.trust.enabled": false
+}
