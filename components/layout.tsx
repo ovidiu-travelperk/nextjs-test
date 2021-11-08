@@ -1,3 +1,4 @@
+import { useRouter } from "next/dist/client/router";
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
@@ -5,13 +6,16 @@ import React from "react";
 import styled from "styled-components";
 import utilStyles from "../styles/utils.module.css";
 
-const name = "Next.js app test";
-export const siteTitle = "Next.js Sample Website";
+const name = "Whitelabel PoC";
+export const siteTitle = "Whitelabel PoC";
 
 export default function Layout({
   children,
   home,
 }: React.PropsWithChildren<{ home?: any }>) {
+  const { query } = useRouter();
+
+  const { embedded } = query;
   return (
     <Container>
       <Head>
@@ -29,48 +33,16 @@ export default function Layout({
         <meta name="og:title" content={siteTitle} />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
-      <Header>
-        {home ? (
-          <>
-            <Image
-              priority
-              src="/images/fine.jpg"
-              className={utilStyles.borderCircle}
-              height={142}
-              width={300}
-              alt={name}
-            />
-            <h1 className={utilStyles.heading2Xl}>{name}</h1>
-          </>
-        ) : (
-          <>
-            <Link href="/">
-              <a>
-                <Image
-                  priority
-                  src="/images/fine.jpg"
-                  className={utilStyles.borderCircle}
-                  height={142}
-                  // layout="responsive"
-                  width={300}
-                  alt={name}
-                />
-              </a>
-            </Link>
-            <h2 className={utilStyles.headingLg}>
-              <Link href="/">
-                <a className={utilStyles.colorInherit}>{name}</a>
-              </Link>
-            </h2>
-          </>
-        )}
-      </Header>
-      <ul>
-        <li>Using StyledComponents</li>
-        {/* <li>Using Suitcase</li> */}
-        <li>Call API server side</li>
-        <li>Custom response headers from API call</li>
-      </ul>
+      {!embedded && (
+        <Header>
+          <h1>RESTRICTIONS WEBSITE</h1>
+          <div>
+            <div>
+              <a href={"https://10ohh.csb.app/"}>Link to marketing site</a>
+            </div>
+          </div>
+        </Header>
+      )}
       <main>{children}</main>
     </Container>
   );
@@ -78,7 +50,7 @@ export default function Layout({
 const Container = styled.div`
   max-width: 36rem;
   padding: 0 1rem;
-  margin: 3rem auto 6rem;
+  margin: 0 auto 6rem;
 `;
 
 const Header = styled.header`

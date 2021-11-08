@@ -1,15 +1,15 @@
 import { createGlobalStyle } from "styled-components";
 
-export default function App({ Component, pageProps }) {
+export default function MyApp({ Component, pageProps, query }) {
   return (
     <>
       <GlobalStyle />
-      <Component {...pageProps} />;
+      <Component {...pageProps} />
     </>
   );
 }
 
-App.getInitialProps = async (ctx) => ({});
+MyApp.getInitialProps = async (ctx) => ({});
 
 const GlobalStyle = createGlobalStyle`
   html,

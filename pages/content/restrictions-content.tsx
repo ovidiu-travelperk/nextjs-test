@@ -3,8 +3,11 @@ import Head from "next/head";
 import Link from "next/link";
 import React from "react";
 import { createGlobalStyle } from "styled-components";
+import { usePreserveEmbeddedQuery } from "utils/utils";
+import utilStyles from "../../styles/utils.module.css";
 
 const FirstPost = () => {
+  const { preserve } = usePreserveEmbeddedQuery();
   return (
     <>
       <GlobalStyle />
@@ -12,12 +15,12 @@ const FirstPost = () => {
         <Head>
           <title>The first post</title>
         </Head>
-        <h1>test</h1>
+        <h3 className={utilStyles.card}>Restrictions content here</h3>
         <h2>
-          <a href="/">Back to home re-load</a>
+          <a href={preserve("/")}>Back to home re-load</a>
         </h2>
         <h2>
-          <Link href="/">Back to home SPA</Link>
+          <Link href={preserve("/")}>Back to home SPA</Link>
         </h2>
       </Layout>
     </>

@@ -2,8 +2,11 @@
 import Layout from "components/layout";
 import Head from "next/head";
 import Link from "next/link";
+import { usePreserveEmbeddedQuery } from "utils/utils";
+import utilStyles from "../styles/utils.module.css";
 
 export default function Home() {
+  const { preserve } = usePreserveEmbeddedQuery();
   return (
     <div className="container">
       <Head>
@@ -12,39 +15,16 @@ export default function Home() {
       </Head>
 
       <Layout home>
+        <h3 className={utilStyles.card}>Restrictions search bar here</h3>
         <h3 className="title">
           Navigate with
-          <a href="/posts/first-post"> reload!</a>
+          <a href={preserve("/content/restrictions-content")}> reload!</a>
         </h3>
         <h1 className="title">
-          Navigate with <Link href="/posts/first-post">SPA!</Link>
+          Navigate with{" "}
+          <Link href={preserve("/content/restrictions-content")}>SPA!</Link>
         </h1>
-
-        {/* <Card accentColor="blue">
-          <Spacer top={2} left={2} bottom={2} right={2}>
-            A suitcase Card
-            <FormattedText size="displayXL" color="brand">
-              test formatting using Suitcase FormattedText
-            </FormattedText>
-            <Button styleType="primary">Suitcase button</Button>
-          </Spacer>
-        </Card> */}
       </Layout>
-
-      <style jsx global>{`
-        html,
-        body {
-          padding: 0;
-          margin: 0;
-          font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
-            Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
-            sans-serif;
-        }
-
-        * {
-          box-sizing: border-box;
-        }
-      `}</style>
     </div>
   );
 }

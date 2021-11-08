@@ -9,18 +9,17 @@ export default class MyDocument extends Document {
     ctx.res.setHeader("current-query", JSON.stringify(ctx.query));
 
     if (!!ctx.res) {
-      const value =
-        (await fetch(
-          "https://random-data-api.com/api/internet_stuff/random_internet_stuff"
-        ).then((r) => r.json())) || {};
-      const strValue = JSON.stringify(value);
-
-      ctx.res.setHeader("api-value", strValue);
-      ctx.res.setHeader(
-        "Content-Security-Policy",
-        `frame-ancestors ${value.url}`
-      );
-      ctx.res.setHeader("X-Frame-Options", `ALLOW_FROM ${value.url}`);
+      // const value =
+      //   (await fetch(
+      //     "https://random-data-api.com/api/internet_stuff/random_internet_stuff"
+      //   ).then((r) => r.json())) || {};
+      // const strValue = JSON.stringify(value);
+      // ctx.res.setHeader("api-value", strValue);
+      // ctx.res.setHeader(
+      //   "Content-Security-Policy",
+      //   `frame-ancestors ${value.url}`
+      // );
+      // ctx.res.setHeader("X-Frame-Options", `ALLOW_FROM ${value.url}`);
     }
     try {
       ctx.renderPage = () =>
