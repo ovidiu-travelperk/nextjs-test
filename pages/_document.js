@@ -46,5 +46,6 @@ export default class MyDocument extends Document {
 export const ALLOWED_EMBEDDING_DOMAINS = [
   "*.travelperk.com",
   "*.clicktravel.com",
-  "*://localhost:*", // for testing
+  "http://localhost:*", // for testing
+  "https://localhost:*", // for testing
 ];
