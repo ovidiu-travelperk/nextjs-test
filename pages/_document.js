@@ -10,10 +10,10 @@ export default class MyDocument extends Document {
 
     if (!!ctx.res) {
       ctx.res.setHeader("X-Frame-Options", "DENY"); // no embedding (for now)
-      // ctx.res.setHeader(
-      //   "Strict-Transport-Security",
-      //   "max-age=63072000; includeSubDomains; preload;"
-      // ); // only allow HTTPS
+      ctx.res.setHeader(
+        "Strict-Transport-Security",
+        "max-age=63072000; includeSubDomains; preload;"
+      ); // only allow HTTPS
 
       ctx.res.setHeader(
         "Content-Security-Policy",
@@ -46,5 +46,5 @@ export default class MyDocument extends Document {
 export const ALLOWED_EMBEDDING_DOMAINS = [
   "*.travelperk.com",
   "*.clicktravel.com",
-  "localhost:*", // for testing
+  "*://localhost:*", // for testing
 ];
