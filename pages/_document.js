@@ -9,17 +9,16 @@ export default class MyDocument extends Document {
     ctx.res.setHeader("current-query", JSON.stringify(ctx.query));
 
     if (!!ctx.res) {
-      // const value =
-      //   (await fetch(
-      //     "https://random-data-api.com/api/internet_stuff/random_internet_stuff"
-      //   ).then((r) => r.json())) || {};
-      // const strValue = JSON.stringify(value);
-      // ctx.res.setHeader("api-value", strValue);
-      // ctx.res.setHeader(
-      //   "Content-Security-Policy",
-      //   `frame-ancestors ${value.url}`
-      // );
-      // ctx.res.setHeader("X-Frame-Options", `ALLOW_FROM ${value.url}`);
+      ctx.res.setHeader("X-Frame-Options", "DENY"); // no embedding (for now)
+      ctx.res.setHeader(
+        "Strict-Transport-Security",
+        "max-age=63072000; includeSubDomains; preload;"
+      ); // only allow HTTPS
+
+      ctx.res.setHeader(
+        "Content-Security-Policy",
+        `frame-ancestors ${ALLOWED_EMBEDDING_DOMAINS.join(" ")}`
+      );
     }
     try {
       ctx.renderPage = () =>
@@ -43,3 +42,9 @@ export default class MyDocument extends Document {
     }
   }
 }
+
+export const ALLOWED_EMBEDDING_DOMAINS = [
+  "*.travelperk.com",
+  "*.clicktravel.com",
+  "localhost:*", // for testing
+];
